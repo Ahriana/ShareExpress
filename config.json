@@ -1,6 +1,10 @@
 {
     "general": {
         "serverName": "RC Dev",
-        "serverPort": 3030
+        "serverPort": 3030,
+        "serverLocation": "http://localhost"
+    },
+    "creds": {
+        "key": "asldgjnsadloikgfnSAdgklJASWDNFGKAJSD"
     }
 }
