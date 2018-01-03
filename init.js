@@ -40,7 +40,7 @@ app.get('/view/:id', (req, res) => {
     res.render('view', {
         name: config.general.serverName,
         image: req.params.id,
-        fullUrl: config.general.serverPort !== 80 ? `${config.general.serverLocation}:${config.general.serverPort}/view/${req.params.id}` : `${config.general.serverLocation}/view/${req.params.id}`,
+        fullImage: config.general.serverPort !== 80 ? `${config.general.serverLocation}:${config.general.serverPort}/images/${req.params.id}` : `${config.general.serverLocation}/images/${req.params.id}`,
     });
 });
 
