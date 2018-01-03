@@ -7,16 +7,10 @@ const config = require('./config.json');
 const fs = require('fs');
 const util = require('util');
 const multer = require('multer');
-
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, `${__dirname}/public/images`);
-    },
-    filename: (req, file, cb) => {
-        cb(null, `image-${Date.now()}.png`);
-    },
+    destination: (req, file, cb) => { cb(null, `${__dirname}/public/images`); },
+    filename: (req, file, cb) => { cb(null, encodeURI(file.originalname)); },
 });
-
 const upload = multer({ storage });
 
 function writeLog(log) {
@@ -32,22 +26,16 @@ function getURL() {
     if (config.general.isProxy) {
         return config.general.serverLocation;
     } else {
-        if (config.general.serverPort === (80 || 443)) {
-            return config.general.serverLocation;
-        }
+        if (config.general.serverPort === (80 || 443)) { return config.general.serverLocation; }
         return `${config.general.serverLocation}:${config.general.serverPort}`;
     }
 }
 
 config.base = getURL();
-
 app.use(helmet());
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    res.render('index', { name: config.general.serverName });
-});
+app.get('/', (req, res) => { res.render('index', { name: config.general.serverName }); });
 
 app.get('/view/:id', (req, res) => {
     res.render('view', {
@@ -58,20 +46,12 @@ app.get('/view/:id', (req, res) => {
 });
 
 app.post('/upload', upload.single('file'), (req, res) => {
-    console.log('file Details:', req.file);
-    console.log('Req Details:', req.body);
     if (req.body.key !== config.creds.key) { return res.status(401).send('nope'); }
     res.send(`${config.base}/view/${req.file.filename}`);
 });
 
-app.get('*', (req, res) => {
-    res.status(404).sendFile(path.join(`${__dirname}/pages/404.html`));
-});
-
-app.use((err, req, res, next) => {
-    writeLog(err);
-    return res.status(500).sendFile(path.join(`${__dirname}/pages/500.html`));
-});
+app.get('*', (req, res) => { res.status(404).sendFile(path.join(`${__dirname}/pages/404.html`)); });
+app.use((err, req, res, next) => { writeLog(err); return res.status(500).sendFile(path.join(`${__dirname}/pages/500.html`)); });
 
 const server = http.createServer(app);
 server.listen(config.general.serverPort);
