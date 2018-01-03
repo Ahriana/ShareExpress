@@ -28,6 +28,19 @@ function writeLog(log) {
     });
 }
 
+function getURL() {
+    if (config.general.isProxy) {
+        return config.general.serverLocation;
+    } else {
+        if (config.general.serverPort === (80 || 443)) {
+            return config.general.serverLocation;
+        }
+        return `${config.general.serverLocation}:${config.general.serverPort}`;
+    }
+}
+
+config.base = getURL();
+
 app.use(helmet());
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,7 +53,7 @@ app.get('/view/:id', (req, res) => {
     res.render('view', {
         name: config.general.serverName,
         image: req.params.id,
-        fullImage: config.general.serverPort !== 80 ? `${config.general.serverLocation}:${config.general.serverPort}/images/${req.params.id}` : `${config.general.serverLocation}/images/${req.params.id}`,
+        fullImage: `${config.base}/images/${req.params.id}`,
     });
 });
 
@@ -48,7 +61,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('file Details:', req.file);
     console.log('Req Details:', req.body);
     if (req.body.key !== config.creds.key) { return res.status(401).send('nope'); }
-    res.send(config.general.serverPort !== 80 ? `${config.general.serverLocation}:${config.general.serverPort}/view/${req.file.filename}` : `${config.general.serverLocation}/view/${req.file.filename}`);
+    res.send(`${config.base}/view/${req.file.filename}`);
 });
 
 app.get('*', (req, res) => {
