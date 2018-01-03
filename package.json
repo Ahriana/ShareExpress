@@ -1,0 +1,19 @@
+{
+  "name": "shareexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "init.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-form": "^0.2.1",
+    "connect-multiparty": "^2.1.0",
+    "express": "^4.16.2",
+    "hbs": "^4.0.1",
+    "helmet": "^3.9.0"
+  }
+}
