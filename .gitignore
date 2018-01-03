@@ -3,3 +3,4 @@ package-lock.json
 .vscode
 ftp-sync.json
 public/images/*
+error.log
