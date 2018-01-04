@@ -13,7 +13,10 @@ const storage = multer.diskStorage({
         if (!fs.existsSync(dir)) { fs.mkdirSync(dir); }
         cb(null, dir);
     },
-    filename: (req, file, cb) => { cb(null, file.originalname.replace(/[^a-z0-9]/gi, '_')); },
+    filename: (req, file, cb) => {
+        if (!req.body.fileName) { return cb(null, file.originalname.replace(/[^a-z0-9]/gi, '_')); }
+        cb(null, req.body.fileName.replace(/[^a-z0-9]/gi, '_'));
+    },
 });
 const upload = multer({ storage });
 
@@ -57,10 +60,8 @@ app.get('/view/:user/:id', (req, res) => {
 });
 
 app.post('/upload', upload.single('file'), (req, res) => {
-
     if (!req.body.userName) { return failed(req, res, 'invalid user', 401); }
     if (req.body.key !== config.users[req.body.userName].key) { return failed(req, res, 'invalid token', 401); }
-
     res.send(`${config.base}/view/${req.body.userName}/${req.file.filename}`);
 });
 
