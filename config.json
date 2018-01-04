@@ -5,7 +5,12 @@
         "serverLocation": "http://localhost",
         "isProxy": false
     },
-    "creds": {
-        "key": "asldgjnsadloikgfnSAdgklJASWDNFGKAJSD"
+    "users": {
+        "rose": {
+            "key": "asldgjnsadloikgfnSAdgklJASWDNFGKAJSD"
+        },
+        "snek": {
+            "key": "asldgjnsadloikgfnSAdgklJASWDNFGKAJSD"
+        }
     }
 }
