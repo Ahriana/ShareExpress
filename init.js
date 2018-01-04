@@ -8,6 +8,7 @@ const fs = require('fs');
 const util = require('util');
 const multer = require('multer');
 const storage = multer.diskStorage({
+    size: (config.general.maxSize * 1000000),
     destination: (req, file, cb) => {
         const dir = `${__dirname}/public/images/${req.body.userName}`;
         if (!fs.existsSync(dir)) { fs.mkdirSync(dir); }
