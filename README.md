@@ -6,7 +6,9 @@
   "RequestURL": "http://localhost:3030/upload",
   "FileFormName": "file",
   "Arguments": {
-    "key": "asldgjnsadloikgfnSAdgklJASWDNFGKAJSD"
+    "key": "asldgjnsadloikgfnSAdgklJASWDNFGKAJSD",
+    "userName": "%un",
+    "fileName": "%guid"
   }
 }
 ```
