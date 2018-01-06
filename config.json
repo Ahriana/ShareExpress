@@ -1,10 +1,10 @@
 {
     "general": {
         "serverName": "RC Dev",
-        "serverPort": 3030,
-        "serverLocation": "http://localhost",
-        "isProxy": false,
-        "maxSize": 100
+        "serverPort": 4002,
+        "serverLocation": "https://uploads.rosiecode.co.uk",
+        "isProxy": true,
+        "useMeta": true
     },
     "users": {
         "rose": {

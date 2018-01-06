@@ -11,6 +11,7 @@
 "serverPort" // server port
 "serverLocation" // url used to access server
 "isProxy" // is the server behind a reverse proxy?
+"maxSize" // max upload size in MB
 "useMeta" // should additional meta data be stored?
 ```
 
