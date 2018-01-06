@@ -39,7 +39,7 @@ Some variables are accessible in the view.hbs page.
 - `{{fullImage}}` - entire URL to the image
 
 The `useMeta` option in enabled additional information will be available through the `{{meta}}` variable. This can look like this
-```json
+```js
  { originalname: 'cmd_2018-01-06_11-57-25.png',
  encoding: '7bit',
  mimetype: 'image/png',
