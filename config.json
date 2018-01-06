@@ -2,8 +2,9 @@
     "general": {
         "serverName": "RC Dev",
         "serverPort": 3030,
-        "serverLocation": "http://localhost,
+        "serverLocation": "http://localhost",
         "isProxy": true,
+        "maxSize": 100,
         "useMeta": true
     },
     "users": {
