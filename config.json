@@ -1,8 +1,8 @@
 {
     "general": {
         "serverName": "RC Dev",
-        "serverPort": 4002,
-        "serverLocation": "https://uploads.rosiecode.co.uk",
+        "serverPort": 3030,
+        "serverLocation": "http://localhost,
         "isProxy": true,
         "useMeta": true
     },
