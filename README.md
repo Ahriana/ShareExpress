@@ -1,3 +1,13 @@
+# install
+
+- git clone https://github.com/RosieCode95/ShareExpress.git
+- cd ShareExpress
+- npm install
+- node init.js
+
+
+
+
 # ShareX example config
 ```
 {
@@ -12,3 +22,14 @@
   }
 }
 ```
+
+# variables
+Some variables are assesable in the view.hbs page.
+- `{{name}}` - server name
+- `{{image}}` - image location (username/image.png)
+- `{{user}}` - username
+- `{{fullImage}}` - entire URL to 
+
+index.hbs
+
+- `{{name}}` - server name
