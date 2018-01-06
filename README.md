@@ -9,7 +9,7 @@
 
 
 # ShareX example config
-```
+```json
 {
   "Name": "RC test",
   "DestinationType": "ImageUploader",
@@ -28,7 +28,7 @@ Some variables are assesable in the view.hbs page.
 - `{{name}}` - server name
 - `{{image}}` - image location (username/image.png)
 - `{{user}}` - username
-- `{{fullImage}}` - entire URL to 
+- `{{fullImage}}` - entire URL to the image
 
 index.hbs
 
